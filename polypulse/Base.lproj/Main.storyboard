@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="polypulse" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="WNk-cG-IPx">
+                                <rect key="frame" x="30" y="285" width="540" height="31"/>
+                                <connections>
+                                    <action selector="sliderSlide:" destination="BYZ-38-t0r" eventType="valueChanged" id="s3r-8J-5DC"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="88200" minValue="5760" maxValue="88200" translatesAutoresizingMaskIntoConstraints="NO" id="zbT-6f-RH5">
+                                <rect key="frame" x="30" y="340" width="540" height="31"/>
+                                <connections>
+                                    <action selector="periodChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="6XI-rO-V4Q"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 bpm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RCS-bI-o2p">
+                                <rect key="frame" x="271" y="415" width="59" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="RCS-bI-o2p" secondAttribute="centerX" id="FfA-MM-Mcv"/>
+                            <constraint firstAttribute="centerX" secondItem="WNk-cG-IPx" secondAttribute="centerX" id="LqA-7B-beL"/>
+                            <constraint firstItem="zbT-6f-RH5" firstAttribute="top" secondItem="WNk-cG-IPx" secondAttribute="bottom" constant="25" id="NbT-uB-4n4"/>
+                            <constraint firstAttribute="centerX" secondItem="zbT-6f-RH5" secondAttribute="centerX" id="WgY-PF-x7I"/>
+                            <constraint firstItem="zbT-6f-RH5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="32" id="XmP-Xj-koC"/>
+                            <constraint firstAttribute="centerY" secondItem="WNk-cG-IPx" secondAttribute="centerY" id="bsw-cC-vq7"/>
+                            <constraint firstItem="RCS-bI-o2p" firstAttribute="top" secondItem="zbT-6f-RH5" secondAttribute="bottom" constant="45" id="rAx-xH-f7K"/>
+                            <constraint firstItem="WNk-cG-IPx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="32" id="sfC-oJ-c74"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bpmLabel" destination="RCS-bI-o2p" id="fPQ-5D-dpK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
