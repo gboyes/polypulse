@@ -10,9 +10,13 @@
 
 @interface Metaronome : NSObject
 
-@property (nonatomic) long  period;
-@property (nonatomic) float freq;
-@property (nonatomic) float amp;
-@property (nonatomic) float pan;
+@property (nonatomic) double    pgroup;
+@property (nonatomic) double    tuplet;
+@property (nonatomic) double    tgroup;
+@property (nonatomic) float     freq;
+@property (nonatomic) float     amp;
+@property (nonatomic) float     pan;
+
+- (double)period:(double)master;
 
 @end

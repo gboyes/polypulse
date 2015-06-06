@@ -12,7 +12,7 @@
 @interface AudioEngine : NSObject
 
 @property (nonatomic) float amp;
-@property (nonatomic) long period;
+@property (nonatomic) double period;
 
 - (void)start;
 - (void)stop;

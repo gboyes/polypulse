@@ -10,4 +10,9 @@
 
 @implementation Metaronome
 
+
+- (double)period:(double)master {
+    return ((master * _pgroup) / _tuplet) * _tgroup;
+}
+
 @end

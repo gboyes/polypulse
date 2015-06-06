@@ -159,7 +159,8 @@
                 float sample = 0.0;
                 for (Metaronome *m in metronomes){
                     
-                    sample += sinf(2.0 * M_PI/kSampleRate * m.freq * sampleTime) * exp(-0.01 * (sampleTime % m.period)) * m.amp;
+                    sample += sinf(2.0 * M_PI/kSampleRate * m.freq * sampleTime) * exp(-0.01 * (fmod( (double)sampleTime, [m period:self.period]) )) * m.amp;
+                    //sample += 1.0 * exp(-0.3 * (fmod( (double)sampleTime, [m period:self.period]) )) * m.amp;
                     
                 }
                 

@@ -23,11 +23,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     @IBAction func periodChange(sender:UISlider!){
+        
         if (audioEngine != nil) {
-            audioEngine.period = Int(floor(sender.value))
+            
+            audioEngine.period = Double(sender.value)
             
             //TODO: gonna need this function
-            let bpm = 44100.0 * 60.0 / floor(sender.value)
+            let bpm = 44100.0 * 60.0 / sender.value
             
             bpmLabel.text = String(format:"%.0f bpm", bpm)
         }
@@ -48,16 +50,30 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         // Do any additional setup after loading the view, typically from a nib.
         
         audioEngine = AudioEngine()
+        audioEngine.period = 44100.0
         
+        let m:Metaronome = Metaronome()
+        m.pgroup = 1
+        m.tuplet = 1
+        m.tgroup = 1
+        m.amp = 0.25
+        m.freq = 5555
+        audioEngine.addMetronome(m)
         
         var i = 0
         while i < 3 {
             
+            let i_ = Double(i)
+            
             let m:Metaronome = Metaronome()
-            m.period = 22050-i*10
-            m.amp = 0.3333333
-            m.freq = 4000.0 - Float(i)*277.0
+            m.pgroup = 1.1 + i_
+            m.tuplet = 3
+            m.tgroup = i_ + 1
+            m.amp = 0.25
+            m.freq = 12000.0 - Float(i) * 277.0
             audioEngine.addMetronome(m)
+            
+            print(String(format: "%0.7f\n", m.period(audioEngine.period)))
             
             i++
             
