@@ -27,6 +27,9 @@
     dispatch_semaphore_t    audioSemaphore;
     NSMutableArray          *_audioBuffers;
     int                     bufferIndex;
+    BOOL                    on;
+    long long               sampleTime;
+    NSMutableArray          *metronomes;
 }
     
 - (void)createAndConfigureComponents;
@@ -37,25 +40,47 @@
 
 @implementation AudioEngine
 
+
+//MARK: Public methods
 - (instancetype)init {
     
     self = [super init];
     if (self){
-        _period = 88100;
+        _period = 88200;
         
         [self createAndConfigureComponents];
         [self initAVAudioSession];
         [self makeEngineConnections];
-        
-        [self startEngine];
-        [self render];
         
     }
     return self;
     
 }
 
+- (void)start {
+    
+    sampleTime = 0;
+    on = YES;
+    [self startEngine];
+    [self render];
+    
+}
 
+- (void)stop {
+    on = NO;
+}
+
+- (void)addMetronome:(Metaronome *)met{
+    
+    if (!metronomes){
+        metronomes = [[NSMutableArray alloc] init];
+    }
+    
+    [metronomes addObject:met];
+}
+
+
+//MARK: Private methods
 - (void)createAndConfigureComponents {
     
     _audioFormat = [[AVAudioFormat alloc] initStandardFormatWithSampleRate:kSampleRate
@@ -86,7 +111,7 @@
     
     [_engine connect:_bufferPlayer to:mainMixer format:_audioFormat];
     
-    // node tap player
+    // node tap player, can monitor with this?
     [_engine connect:_mixerOutputFilePlayer to:mainMixer format:[mainMixer outputFormatForBus:0]];
 }
 
@@ -115,9 +140,7 @@
     
     dispatch_async(audioQueue, ^{
         
-        float sampleTime = 0;
-        
-        while (YES) {
+        while (on) {
             
             // Wait for a buffer to become available.
             dispatch_semaphore_wait(audioSemaphore, DISPATCH_TIME_FOREVER);
@@ -126,15 +149,26 @@
             float *rightChannel = buffer.floatChannelData[1];
             
             for (int sampleIndex = 0; sampleIndex < kSamplesPerBuffer; sampleIndex++) {
+                
                 //float sample =  ((((float) (arc4random() % ((unsigned)RAND_MAX + 1)) / RAND_MAX) * 2.0) - 1.0) * self.amp;
                 
                 
-                float sample = sinf(2.0 * M_PI/kSampleRate * 5111.0 * sampleTime) * exp(-0.003 * ((int)sampleTime % self.period)) * 0.333333 + sinf(2.0 * M_PI/kSampleRate * 8800.0 * sampleTime) * exp(-0.003 * ((int)sampleTime % (int)(self.period / 4.0 * 3.0))) * 0.3333333 + sinf(2.0 * M_PI/kSampleRate * 6900.0 * sampleTime) * exp(-0.003 * ((int)sampleTime % (int)(self.period / 7.0 * 3.0))) * 0.333333;
+//                float sample = sinf(2.0 * M_PI/kSampleRate * 5111.0 * sampleTime) * exp(-0.1 * (sampleTime % self.period)) * 0.333333 + sinf(2.0 * M_PI/kSampleRate * 8800.0 * sampleTime) * exp(-0.1 * (sampleTime % (int)(self.period / 4.0 * 3.0))) * 0.3333333 + sinf(2.0 * M_PI/kSampleRate * 6900.0 * sampleTime) * exp(-0.1 * (sampleTime % (int)(self.period / 7.0 * 3.0))) * 0.333333;
+//
+                
+                float sample = 0.0;
+                for (Metaronome *m in metronomes){
+                    
+                    sample += sinf(2.0 * M_PI/kSampleRate * m.freq * sampleTime) * exp(-0.01 * (sampleTime % m.period)) * m.amp;
+                    
+                }
                 
                 //float sample = 1.0 * exp(-0.01 * ((int)sampleTime % 22050));
                 sample *= self.amp;
+                
                 leftChannel[sampleIndex] = sample;
                 rightChannel[sampleIndex] = sample;
+                
                 sampleTime++;
             }
             
@@ -169,7 +203,7 @@
     NSError *error;
     
     // set the session category
-    bool success = [sessionInstance setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
+    bool success = [sessionInstance setCategory:AVAudioSessionCategoryPlayback error:&error];
     if (!success) NSLog(@"Error setting AVAudioSession category! %@\n", [error localizedDescription]);
     
     double hwSampleRate = 44100.0;
@@ -218,8 +252,11 @@
         if (!success) NSLog(@"AVAudioSession set active failed with error: %@", [error localizedDescription]);
         
         // start the engine once again
-        [self startEngine];
-        [self render];
+        
+        if (on){
+            [self startEngine];
+            [self render];
+        }
     }
 }
 
@@ -266,9 +303,11 @@
     
     [self createAndConfigureComponents];
     [self makeEngineConnections];
-    [self startEngine];
-    [self render];
     
+    if (on){
+        [self startEngine];
+        [self render];
+    }
 }
 
 @end

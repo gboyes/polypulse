@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E37842D6-B89F-4BF6-B1B9-7680C34974F4</string>
+	<key>IDESourceControlProjectName</key>
+	<string>polypulse</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>BDE7D4B13EB14FB01638FA589A4EEC4870AE26D3</key>
+		<string>geb.so:/home/geb/docs/polypulse</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>polypulse.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>BDE7D4B13EB14FB01638FA589A4EEC4870AE26D3</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>geb.so:/home/geb/docs/polypulse</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>BDE7D4B13EB14FB01638FA589A4EEC4870AE26D3</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BDE7D4B13EB14FB01638FA589A4EEC4870AE26D3</string>
+			<key>IDESourceControlWCCName</key>
+			<string>polypulse</string>
+		</dict>
+	</array>
+</dict>
+</plist>

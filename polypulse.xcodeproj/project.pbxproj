@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		822A7F331B225A14002E53BB /* Metaronome.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A7F321B225A14002E53BB /* Metaronome.m */; };
 		82EF3E4D1B20A95300C31F9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EF3E4C1B20A95300C31F9A /* AppDelegate.swift */; };
 		82EF3E501B20A95300C31F9A /* polypulse.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82EF3E4E1B20A95300C31F9A /* polypulse.xcdatamodeld */; };
 		82EF3E521B20A95300C31F9A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EF3E511B20A95300C31F9A /* ViewController.swift */; };
@@ -29,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		822A7F311B225A14002E53BB /* Metaronome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Metaronome.h; sourceTree = "<group>"; };
+		822A7F321B225A14002E53BB /* Metaronome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Metaronome.m; sourceTree = "<group>"; };
 		82EF3E471B20A95300C31F9A /* polypulse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = polypulse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82EF3E4B1B20A95300C31F9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82EF3E4C1B20A95300C31F9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +96,8 @@
 				82EF3E511B20A95300C31F9A /* ViewController.swift */,
 				82EF3E731B20D5E800C31F9A /* AudioEngine.h */,
 				82EF3E741B20D5E800C31F9A /* AudioEngine.m */,
+				822A7F311B225A14002E53BB /* Metaronome.h */,
+				822A7F321B225A14002E53BB /* Metaronome.m */,
 				82EF3E531B20A95300C31F9A /* Main.storyboard */,
 				82EF3E561B20A95300C31F9A /* Images.xcassets */,
 				82EF3E581B20A95300C31F9A /* LaunchScreen.xib */,
@@ -238,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				82EF3E751B20D5E800C31F9A /* AudioEngine.m in Sources */,
+				822A7F331B225A14002E53BB /* Metaronome.m in Sources */,
 				82EF3E521B20A95300C31F9A /* ViewController.swift in Sources */,
 				82EF3E4D1B20A95300C31F9A /* AppDelegate.swift in Sources */,
 				82EF3E501B20A95300C31F9A /* polypulse.xcdatamodeld in Sources */,
@@ -451,6 +457,7 @@
 				82EF3E6B1B20A95300C31F9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		82EF3E6C1B20A95300C31F9A /* Build configuration list for PBXNativeTarget "polypulseTests" */ = {
 			isa = XCConfigurationList;
@@ -459,6 +466,7 @@
 				82EF3E6E1B20A95300C31F9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

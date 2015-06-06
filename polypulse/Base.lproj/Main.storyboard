@@ -17,38 +17,81 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="WNk-cG-IPx">
-                                <rect key="frame" x="30" y="285" width="540" height="31"/>
+                                <rect key="frame" x="30" y="439" width="540" height="31"/>
                                 <connections>
                                     <action selector="sliderSlide:" destination="BYZ-38-t0r" eventType="valueChanged" id="s3r-8J-5DC"/>
                                 </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="88200" minValue="5760" maxValue="88200" translatesAutoresizingMaskIntoConstraints="NO" id="zbT-6f-RH5">
-                                <rect key="frame" x="30" y="340" width="540" height="31"/>
+                                <rect key="frame" x="30" y="494" width="540" height="31"/>
                                 <connections>
                                     <action selector="periodChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="6XI-rO-V4Q"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 bpm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RCS-bI-o2p">
-                                <rect key="frame" x="271" y="415" width="59" height="21"/>
+                                <rect key="frame" x="271" y="569" width="59" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xtf-29-QIN">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="419"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Kjs-pl-hIz">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ADM-yZ-epf">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Gpp-kz-CG3"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="PNo-Th-rBp"/>
+                                </connections>
+                            </collectionView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1A3-Nh-sdP">
+                                <rect key="frame" x="32" y="549" width="51" height="31"/>
+                                <connections>
+                                    <action selector="toggleMetronome:" destination="BYZ-38-t0r" eventType="valueChanged" id="AVb-W9-1zr"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="xtf-29-QIN" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="0VW-FT-S8g"/>
+                            <constraint firstItem="xtf-29-QIN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3Av-ne-121"/>
+                            <constraint firstAttribute="bottom" secondItem="1A3-Nh-sdP" secondAttribute="bottom" constant="20" id="6D6-Pg-KuD"/>
+                            <constraint firstItem="1A3-Nh-sdP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="32" id="7tj-Bd-MPj"/>
+                            <constraint firstAttribute="bottom" secondItem="RCS-bI-o2p" secondAttribute="bottom" constant="10" id="Aml-TY-zbC"/>
                             <constraint firstAttribute="centerX" secondItem="RCS-bI-o2p" secondAttribute="centerX" id="FfA-MM-Mcv"/>
                             <constraint firstAttribute="centerX" secondItem="WNk-cG-IPx" secondAttribute="centerX" id="LqA-7B-beL"/>
                             <constraint firstItem="zbT-6f-RH5" firstAttribute="top" secondItem="WNk-cG-IPx" secondAttribute="bottom" constant="25" id="NbT-uB-4n4"/>
+                            <constraint firstItem="WNk-cG-IPx" firstAttribute="top" secondItem="xtf-29-QIN" secondAttribute="bottom" constant="20" id="Vly-82-T3B"/>
                             <constraint firstAttribute="centerX" secondItem="zbT-6f-RH5" secondAttribute="centerX" id="WgY-PF-x7I"/>
                             <constraint firstItem="zbT-6f-RH5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="32" id="XmP-Xj-koC"/>
                             <constraint firstAttribute="centerY" secondItem="WNk-cG-IPx" secondAttribute="centerY" id="bsw-cC-vq7"/>
                             <constraint firstItem="RCS-bI-o2p" firstAttribute="top" secondItem="zbT-6f-RH5" secondAttribute="bottom" constant="45" id="rAx-xH-f7K"/>
                             <constraint firstItem="WNk-cG-IPx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="32" id="sfC-oJ-c74"/>
+                            <constraint firstAttribute="centerX" secondItem="xtf-29-QIN" secondAttribute="centerX" id="zHl-Mi-19Q"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="bsw-cC-vq7"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="bpmLabel" destination="RCS-bI-o2p" id="fPQ-5D-dpK"/>
+                        <outlet property="collectionView" destination="xtf-29-QIN" id="gtu-RA-sXD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
