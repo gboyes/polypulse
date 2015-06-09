@@ -79,6 +79,17 @@
     [metronomes addObject:met];
 }
 
+- (void)removeMetronome:(Metaronome *)met{
+    
+    if (metronomes) {
+        [metronomes removeObject:met];
+    }
+}
+
+- (NSArray *)getMetronomes {
+    return [NSArray arrayWithArray:metronomes];
+}
+
 
 //MARK: Private methods
 - (void)createAndConfigureComponents {
@@ -145,30 +156,35 @@
             // Wait for a buffer to become available.
             dispatch_semaphore_wait(audioSemaphore, DISPATCH_TIME_FOREVER);
             AVAudioPCMBuffer *buffer = (AVAudioPCMBuffer *)[_audioBuffers objectAtIndex:bufferIndex]; // Fill the buffer with new samples.
+            
             float *leftChannel = buffer.floatChannelData[0];
             float *rightChannel = buffer.floatChannelData[1];
             
+            //copy the array of metronomes, in case a new one is added by the user
+            NSArray *ms = [NSArray arrayWithArray:metronomes];
+            
+            float scalar = 1.0 / [ms count];
+            
             for (int sampleIndex = 0; sampleIndex < kSamplesPerBuffer; sampleIndex++) {
                 
-                //float sample =  ((((float) (arc4random() % ((unsigned)RAND_MAX + 1)) / RAND_MAX) * 2.0) - 1.0) * self.amp;
-                
-                
-//                float sample = sinf(2.0 * M_PI/kSampleRate * 5111.0 * sampleTime) * exp(-0.1 * (sampleTime % self.period)) * 0.333333 + sinf(2.0 * M_PI/kSampleRate * 8800.0 * sampleTime) * exp(-0.1 * (sampleTime % (int)(self.period / 4.0 * 3.0))) * 0.3333333 + sinf(2.0 * M_PI/kSampleRate * 6900.0 * sampleTime) * exp(-0.1 * (sampleTime % (int)(self.period / 7.0 * 3.0))) * 0.333333;
-//
-                
                 float sample = 0.0;
-                for (Metaronome *m in metronomes){
+                
+                float lsample = 0.0;
+                float rsample = 0.0;
+                
+                for (Metaronome *m in ms){
                     
-                    sample += sinf(2.0 * M_PI/kSampleRate * m.freq * sampleTime) * exp(-0.01 * (fmod( (double)sampleTime, [m period:self.period]) )) * m.amp;
-                    //sample += 1.0 * exp(-0.3 * (fmod( (double)sampleTime, [m period:self.period]) )) * m.amp;
+                    sample += sinf(2.0 * M_PI/kSampleRate * m.freq * sampleTime) * exp(-0.005 * (fmod( (double)sampleTime, [m period:self.period]) )) * m.amp;
                     
+                    lsample += sample * m.pan;
+                    rsample += sample * (1-m.pan);
                 }
                 
-                //float sample = 1.0 * exp(-0.01 * ((int)sampleTime % 22050));
-                sample *= self.amp;
+                lsample *= self.amp * scalar;
+                rsample *= self.amp * scalar;
                 
-                leftChannel[sampleIndex] = sample;
-                rightChannel[sampleIndex] = sample;
+                leftChannel[sampleIndex] = lsample;
+                rightChannel[sampleIndex] = rsample;
                 
                 sampleTime++;
             }

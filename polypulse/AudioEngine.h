@@ -16,6 +16,9 @@
 
 - (void)start;
 - (void)stop;
+
 - (void)addMetronome:(Metaronome *)met;
+- (void)removeMetronome:(Metaronome *)met;
+- (NSArray *)getMetronomes;
 
 @end

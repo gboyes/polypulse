@@ -31,28 +31,39 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 bpm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RCS-bI-o2p">
                                 <rect key="frame" x="271" y="569" width="59" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xtf-29-QIN">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xtf-29-QIN">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="419"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Kjs-pl-hIz">
-                                    <size key="itemSize" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="419" id="gWy-F1-DZN"/>
+                                    <constraint firstAttribute="width" constant="600" id="uOY-Rb-4Y3"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Kjs-pl-hIz">
+                                    <size key="itemSize" width="206" height="233"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ADM-yZ-epf">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="metronomeCell" id="ADM-yZ-epf" customClass="MetronomeCell" customModule="polypulse" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="206" height="233"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <size key="customSize" width="206" height="233"/>
                                     </collectionViewCell>
                                 </cells>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="gWy-F1-DZN"/>
+                                        <exclude reference="uOY-Rb-4Y3"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="Gpp-kz-CG3"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="PNo-Th-rBp"/>
@@ -64,6 +75,18 @@
                                     <action selector="toggleMetronome:" destination="BYZ-38-t0r" eventType="valueChanged" id="AVb-W9-1zr"/>
                                 </connections>
                             </switch>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F6X-CJ-Ol4">
+                                <rect key="frame" x="518" y="549" width="50" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="VFB-2h-1u2"/>
+                                </constraints>
+                                <state key="normal" title="+">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addMetronome" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hfm-HK-deY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -74,9 +97,11 @@
                             <constraint firstAttribute="bottom" secondItem="RCS-bI-o2p" secondAttribute="bottom" constant="10" id="Aml-TY-zbC"/>
                             <constraint firstAttribute="centerX" secondItem="RCS-bI-o2p" secondAttribute="centerX" id="FfA-MM-Mcv"/>
                             <constraint firstAttribute="centerX" secondItem="WNk-cG-IPx" secondAttribute="centerX" id="LqA-7B-beL"/>
+                            <constraint firstAttribute="trailing" secondItem="F6X-CJ-Ol4" secondAttribute="trailing" constant="32" id="Lza-UB-CJN"/>
                             <constraint firstItem="zbT-6f-RH5" firstAttribute="top" secondItem="WNk-cG-IPx" secondAttribute="bottom" constant="25" id="NbT-uB-4n4"/>
                             <constraint firstItem="WNk-cG-IPx" firstAttribute="top" secondItem="xtf-29-QIN" secondAttribute="bottom" constant="20" id="Vly-82-T3B"/>
                             <constraint firstAttribute="centerX" secondItem="zbT-6f-RH5" secondAttribute="centerX" id="WgY-PF-x7I"/>
+                            <constraint firstAttribute="bottom" secondItem="F6X-CJ-Ol4" secondAttribute="bottom" constant="21" id="XYw-Bo-QIV"/>
                             <constraint firstItem="zbT-6f-RH5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="32" id="XmP-Xj-koC"/>
                             <constraint firstAttribute="centerY" secondItem="WNk-cG-IPx" secondAttribute="centerY" id="bsw-cC-vq7"/>
                             <constraint firstItem="RCS-bI-o2p" firstAttribute="top" secondItem="zbT-6f-RH5" secondAttribute="bottom" constant="45" id="rAx-xH-f7K"/>

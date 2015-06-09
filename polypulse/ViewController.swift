@@ -45,41 +45,49 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
     }
     
+    @IBAction func addMetronome(){
+        
+        self.makeMetronomeAction()
+        
+    }
+    
+    func makeMetronomeAction(){
+        
+        let m = Metaronome()
+        audioEngine.addMetronome(m)
+        
+        collectionView.reloadData()
+        
+        let p = NSIndexPath(forItem: audioEngine.getMetronomes().count-1, inSection: 0)
+        
+        collectionView.scrollToItemAtIndexPath(p, atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
+    }
+    
+    func tupletStepper(sender:UIStepper!){
+        //print("Steppin'\n")
+        
+        let m = audioEngine.getMetronomes()[sender.tag] as! Metaronome
+        m.tuplet = sender.value
+        
+    }
+    
+    func freqSliderAction(sender:UISlider!){
+        
+        let m = audioEngine.getMetronomes()[sender.tag] as! Metaronome
+        m.freq = sender.value
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        collectionView.registerNib(UINib(nibName: "MetronomeCell", bundle: nil), forCellWithReuseIdentifier: "metronomeCell")
+        
         audioEngine = AudioEngine()
         audioEngine.period = 44100.0
         
-        let m:Metaronome = Metaronome()
-        m.pgroup = 1
-        m.tuplet = 1
-        m.tgroup = 1
-        m.amp = 0.25
-        m.freq = 5555
-        audioEngine.addMetronome(m)
-        
-        var i = 0
-        while i < 3 {
-            
-            let i_ = Double(i)
-            
-            let m:Metaronome = Metaronome()
-            m.pgroup = 1.1 + i_
-            m.tuplet = 3
-            m.tgroup = i_ + 1
-            m.amp = 0.25
-            m.freq = 12000.0 - Float(i) * 277.0
-            audioEngine.addMetronome(m)
-            
-            print(String(format: "%0.7f\n", m.period(audioEngine.period)))
-            
-            i++
-            
-        }
-        
-        
+        self.makeMetronomeAction()
         
     }
 
@@ -90,17 +98,28 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
     //MARK: collectionview implementation
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell:UICollectionViewCell! = nil
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("metronomeCell", forIndexPath: indexPath) as! MetronomeCell
+        
+        cell.freqLabel.text = String(format: "%d", indexPath.row)
+        
+        let tag = indexPath.row
+        
+        cell.tupletStepper.tag = tag
+        cell.tupletStepper.addTarget(self, action: Selector("tupletStepper:"), forControlEvents: UIControlEvents.TouchUpInside)
+        
+        cell.freqSlider.tag = tag
+        cell.freqSlider.addTarget(self, action: Selector("freqSliderAction:"), forControlEvents: UIControlEvents.ValueChanged)
+        
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return audioEngine.getMetronomes().count
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 0
+        return 1
     }
-
+    
 }
 
