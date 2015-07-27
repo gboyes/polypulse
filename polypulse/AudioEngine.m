@@ -122,8 +122,10 @@
     
     [_engine connect:_bufferPlayer to:mainMixer format:_audioFormat];
     
-    // node tap player, can monitor with this?
-    [_engine connect:_mixerOutputFilePlayer to:mainMixer format:[mainMixer outputFormatForBus:0]];
+    // node tap player, can monitor / record with this
+    [_engine connect:_mixerOutputFilePlayer
+                  to:mainMixer
+              format:[mainMixer outputFormatForBus:0]];
 }
 
 - (void)startEngine {
@@ -147,14 +149,17 @@
     NSAssert([_engine startAndReturnError:&error], @"couldn't start engine, %@", [error localizedDescription]);
 }
 
+//MARK: callback that fills the audio buffer
 - (void)render {
     
     dispatch_async(audioQueue, ^{
         
         while (on) {
             
-            // Wait for a buffer to become available.
+            // Wait for a buffer to become available using the audio semaphore
             dispatch_semaphore_wait(audioSemaphore, DISPATCH_TIME_FOREVER);
+            
+            //get the reference to the current audio buffer
             AVAudioPCMBuffer *buffer = (AVAudioPCMBuffer *)[_audioBuffers objectAtIndex:bufferIndex]; // Fill the buffer with new samples.
             
             float *leftChannel = buffer.floatChannelData[0];
@@ -168,14 +173,12 @@
             for (int sampleIndex = 0; sampleIndex < kSamplesPerBuffer; sampleIndex++) {
                 
                 float sample = 0.0;
-                
                 float lsample = 0.0;
                 float rsample = 0.0;
                 
+                //iterate through the refs and construct the sample, slow
                 for (Metaronome *m in ms){
-                    
                     sample += sinf(2.0 * M_PI/kSampleRate * m.freq * sampleTime) * exp(-0.005 * (fmod( (double)sampleTime, [m period:self.period]) )) * m.amp;
-                    
                     lsample += sample * m.pan;
                     rsample += sample * (1-m.pan);
                 }
@@ -190,10 +193,12 @@
             }
             
             buffer.frameLength = kSamplesPerBuffer;
-                
-                // Schedule the buffer for playback and release it for reuse after
-                // playback has finished.
+            
+            
+            // Schedule the buffer for playback and release it for reuse after playback has finished.
             [_bufferPlayer scheduleBuffer:buffer completionHandler:^{
+                
+                //free the semaphore
                 dispatch_semaphore_signal(audioSemaphore);
                 return;
             }];
@@ -208,8 +213,7 @@
     
 }
 
-#pragma mark AVAudioSession boiler plate
-
+//MARK: AVAudioSession boiler plate
 - (void)initAVAudioSession
 {
     // For complete details regarding the use of AVAudioSession see the AVAudioSession Programming Guide
