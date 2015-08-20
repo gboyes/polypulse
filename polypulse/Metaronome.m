@@ -27,8 +27,9 @@
     return self;
 }
 
-- (double)period:(double)master {
-    return ((master * _pgroup) / _tuplet) * _tgroup;
+- (void)setPeriod:(double)master {
+    _period = ((master * _pgroup) / _tuplet) * _tgroup;
+    _bpm = 44100.0 * 60.0 / _period;
 }
 
 @end

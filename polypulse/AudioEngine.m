@@ -46,7 +46,7 @@
     
     self = [super init];
     if (self){
-        _period = 88200;
+        _period = 44100;
         
         [self createAndConfigureComponents];
         [self initAVAudioSession];
@@ -178,7 +178,7 @@
                 
                 //iterate through the refs and construct the sample, slow
                 for (Metaronome *m in ms){
-                    sample += sinf(2.0 * M_PI/kSampleRate * m.freq * sampleTime) * exp(-0.005 * (fmod( (double)sampleTime, [m period:self.period]) )) * m.amp;
+                    sample += sinf(2.0 * M_PI/kSampleRate * m.freq * sampleTime) * exp(-0.005 * (fmod( (double)sampleTime, m.period))) * m.amp;
                     lsample += sample * m.pan;
                     rsample += sample * (1-m.pan);
                 }
@@ -216,9 +216,6 @@
 //MARK: AVAudioSession boiler plate
 - (void)initAVAudioSession
 {
-    // For complete details regarding the use of AVAudioSession see the AVAudioSession Programming Guide
-    // https://developer.apple.com/library/ios/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/Introduction/Introduction.html
-    
     // Configure the audio session
     AVAudioSession *sessionInstance = [AVAudioSession sharedInstance];
     NSError *error;

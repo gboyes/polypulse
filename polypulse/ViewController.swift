@@ -31,7 +31,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             if down {
                 self.controlView.alpha = 0.0
             } else {
-                self.controlView.alpha = 1.0
+                self.controlView.alpha = 0.9
             }
             
         })
@@ -49,10 +49,17 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             
             audioEngine.period = Double(sender.value)
             
-            //TODO: gonna need this function
             let bpm = 44100.0 * 60.0 / sender.value
             
             bpmLabel.text = String(format:"%.0f bpm", bpm)
+            
+            
+            for m in audioEngine.getMetronomes() {
+                m.setPeriod(audioEngine.period)
+            }
+            
+            
+            self.collectionView.reloadData()
         }
     }
     
@@ -75,6 +82,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func makeMetronomeAction(){
         
         let m = Metaronome()
+        
+        m.setPeriod(audioEngine.period)
         audioEngine.addMetronome(m)
         
         collectionView.reloadData()
@@ -88,6 +97,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         let m = audioEngine.getMetronomes()[sender.tag] as! Metaronome
         m.tuplet = sender.value
+        m.setPeriod(audioEngine.period)
+        
+        //update the cell UI
+        let i = NSIndexPath(forRow: sender.tag, inSection: 0)
+        let cell = collectionView.cellForItemAtIndexPath(i) as! MetronomeCell
+        self.configureCell(cell, m: m, index: sender.tag)
         
     }
     
@@ -96,12 +111,27 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let m = audioEngine.getMetronomes()[sender.tag] as! Metaronome
         m.tgroup = sender.value
         
+        m.setPeriod(audioEngine.period)
+        
+        //update the cell UI
+        let i = NSIndexPath(forRow: sender.tag, inSection: 0)
+        let cell = collectionView.cellForItemAtIndexPath(i) as! MetronomeCell
+        self.configureCell(cell, m: m, index: sender.tag)
+        
     }
     
     func periodGroupStepper(sender:UIStepper!){
         
         let m = audioEngine.getMetronomes()[sender.tag] as! Metaronome
         m.pgroup = sender.value
+        
+        m.setPeriod(audioEngine.period)
+        
+        //update the cell UI
+        let i = NSIndexPath(forRow: sender.tag, inSection: 0)
+        let cell = collectionView.cellForItemAtIndexPath(i) as! MetronomeCell
+        self.configureCell(cell, m: m, index: sender.tag)
+        
         
     }
     
@@ -151,9 +181,30 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("metronomeCell", forIndexPath: indexPath) as! MetronomeCell
         
-        cell.freqLabel.text = String(format: "%d", indexPath.row)
+        self.configureCell(cell, m: m, index: indexPath.row)
         
-        let tag = indexPath.row
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return audioEngine.getMetronomes().count
+    }
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func configureCell(cell:MetronomeCell, m:Metaronome, index:Int) {
+        
+        
+        cell.freqLabel.text = String(format: "%0.2f", m.bpm)
+        
+        cell.contentView.layer.borderColor = UIColor.blackColor().CGColor
+        cell.contentView.layer.borderWidth = 2.0
+        
+        
+        //TODO: do this once instead
+        let tag = index
         
         //should add the target only once
         cell.tupletStepper.tag = tag
@@ -180,17 +231,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         cell.ampSlider.addTarget(self, action: Selector("ampSliderAction:"), forControlEvents: UIControlEvents.ValueChanged)
         cell.ampSlider.setValue(m.amp, animated: false)
         
-        
-        return cell
     }
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return audioEngine.getMetronomes().count
-    }
-    
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
 }
 
