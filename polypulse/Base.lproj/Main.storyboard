@@ -13,11 +13,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xtf-29-QIN">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="419" id="gWy-F1-DZN"/>
                                     <constraint firstAttribute="width" constant="600" id="uOY-Rb-4Y3"/>
@@ -52,7 +52,7 @@
                                 </connections>
                             </collectionView>
                             <view alpha="0.89999999999999991" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7qp-Lb-02Y">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <subviews>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="WNk-cG-IPx">
                                         <rect key="frame" x="18" y="316" width="564" height="31"/>
@@ -145,7 +145,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="polypulse" id="Zfg-fJ-vI2">
-                        <barButtonItem key="rightBarButtonItem" title="control" id="Nm8-d2-tSW">
+                        <barButtonItem key="rightBarButtonItem" image="pulse.png" id="Nm8-d2-tSW">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="controlAction:" destination="BYZ-38-t0r" id="rZL-Mk-CAb"/>
@@ -166,7 +166,7 @@
         <scene sceneID="sg3-Om-sXX">
             <objects>
                 <navigationController id="7IS-bV-Dbt" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uFE-79-7UB">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="uFE-79-7UB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -179,4 +179,7 @@
             <point key="canvasLocation" x="296" y="1094"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pulse.png" width="22" height="22"/>
+    </resources>
 </document>

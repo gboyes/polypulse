@@ -8,8 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		822A7F331B225A14002E53BB /* Metaronome.m in Sources */ = {isa = PBXBuildFile; fileRef = 822A7F321B225A14002E53BB /* Metaronome.m */; };
+		82368FA81B868DF80090E678 /* pulse@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82368FA51B868DF80090E678 /* pulse@2x.png */; };
+		82368FA91B868DF80090E678 /* pulse@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82368FA61B868DF80090E678 /* pulse@3x.png */; };
 		826B185D1B26697D00167B82 /* MetronomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826B185C1B26697D00167B82 /* MetronomeCell.swift */; };
 		826B185F1B26764300167B82 /* MetronomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 826B185E1B26764300167B82 /* MetronomeCell.xib */; };
+		8274C9FF1B878A4700BBE26E /* pulse@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8274C9FE1B878A4700BBE26E /* pulse@1x.png */; };
 		82EF3E4D1B20A95300C31F9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EF3E4C1B20A95300C31F9A /* AppDelegate.swift */; };
 		82EF3E501B20A95300C31F9A /* polypulse.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82EF3E4E1B20A95300C31F9A /* polypulse.xcdatamodeld */; };
 		82EF3E521B20A95300C31F9A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EF3E511B20A95300C31F9A /* ViewController.swift */; };
@@ -34,8 +37,11 @@
 /* Begin PBXFileReference section */
 		822A7F311B225A14002E53BB /* Metaronome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Metaronome.h; sourceTree = "<group>"; };
 		822A7F321B225A14002E53BB /* Metaronome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Metaronome.m; sourceTree = "<group>"; };
+		82368FA51B868DF80090E678 /* pulse@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pulse@2x.png"; sourceTree = "<group>"; };
+		82368FA61B868DF80090E678 /* pulse@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pulse@3x.png"; sourceTree = "<group>"; };
 		826B185C1B26697D00167B82 /* MetronomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeCell.swift; sourceTree = "<group>"; };
 		826B185E1B26764300167B82 /* MetronomeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronomeCell.xib; sourceTree = "<group>"; };
+		8274C9FE1B878A4700BBE26E /* pulse@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pulse@1x.png"; sourceTree = "<group>"; };
 		82EF3E471B20A95300C31F9A /* polypulse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = polypulse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82EF3E4B1B20A95300C31F9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82EF3E4C1B20A95300C31F9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +79,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		82368FA31B868DF80090E678 /* img */ = {
+			isa = PBXGroup;
+			children = (
+				8274C9FE1B878A4700BBE26E /* pulse@1x.png */,
+				82368FA51B868DF80090E678 /* pulse@2x.png */,
+				82368FA61B868DF80090E678 /* pulse@3x.png */,
+			);
+			path = img;
+			sourceTree = "<group>";
+		};
 		82EF3E3E1B20A95300C31F9A = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +133,7 @@
 		82EF3E4A1B20A95300C31F9A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				82368FA31B868DF80090E678 /* img */,
 				82EF3E4B1B20A95300C31F9A /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -229,9 +246,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				826B185F1B26764300167B82 /* MetronomeCell.xib in Resources */,
+				82368FA91B868DF80090E678 /* pulse@3x.png in Resources */,
 				82EF3E551B20A95300C31F9A /* Main.storyboard in Resources */,
 				82EF3E5A1B20A95300C31F9A /* LaunchScreen.xib in Resources */,
+				82368FA81B868DF80090E678 /* pulse@2x.png in Resources */,
 				82EF3E571B20A95300C31F9A /* Images.xcassets in Resources */,
+				8274C9FF1B878A4700BBE26E /* pulse@1x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -206,7 +206,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         //TODO: do this once instead
         let tag = index
         
-        //should add the target only once
         cell.tupletStepper.tag = tag
         cell.tupletStepper.addTarget(self, action: Selector("tupletStepper:"), forControlEvents: UIControlEvents.TouchUpInside)
         cell.tupletStepper.value = m.tuplet
