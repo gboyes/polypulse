@@ -37,6 +37,13 @@
                     <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="tUY-ZZ-gb5">
                         <rect key="frame" x="111" y="46" width="94" height="29"/>
                     </stepper>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XKs-AW-keu">
+                        <rect key="frame" x="273" y="-12" width="31" height="70"/>
+                        <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="50"/>
+                        <state key="normal" title="-">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
@@ -55,6 +62,7 @@
                 <constraint firstAttribute="centerX" secondItem="Saa-Zs-9RL" secondAttribute="centerX" id="caa-f0-c6i"/>
                 <constraint firstItem="Wkl-1w-qGO" firstAttribute="leading" secondItem="SFP-1e-pUk" secondAttribute="leading" constant="8" id="clN-gy-4nf"/>
                 <constraint firstItem="Wkl-1w-qGO" firstAttribute="top" secondItem="SFP-1e-pUk" secondAttribute="top" constant="8" id="csY-CN-ppD"/>
+                <constraint firstItem="XKs-AW-keu" firstAttribute="centerY" secondItem="Wkl-1w-qGO" secondAttribute="centerY" id="eDy-AX-Qhx"/>
                 <constraint firstAttribute="centerX" secondItem="ebo-8i-I3d" secondAttribute="centerX" id="ecL-gi-0I0"/>
                 <constraint firstItem="bf4-Nf-8DQ" firstAttribute="top" secondItem="tUY-ZZ-gb5" secondAttribute="bottom" constant="20" id="ehE-Jh-iaf"/>
                 <constraint firstItem="UnW-QF-Hmi" firstAttribute="top" secondItem="bf4-Nf-8DQ" secondAttribute="bottom" constant="20" id="hBP-67-CCr"/>
@@ -62,6 +70,7 @@
                 <constraint firstItem="zKB-hd-c7n" firstAttribute="top" secondItem="UnW-QF-Hmi" secondAttribute="bottom" constant="21" id="np6-CX-G8r"/>
                 <constraint firstItem="ebo-8i-I3d" firstAttribute="leading" secondItem="SFP-1e-pUk" secondAttribute="leading" constant="20" id="s7T-4Z-87v"/>
                 <constraint firstAttribute="centerX" secondItem="UnW-QF-Hmi" secondAttribute="centerX" id="vWQ-I9-98P"/>
+                <constraint firstAttribute="trailing" secondItem="XKs-AW-keu" secondAttribute="trailing" constant="12" id="yaz-65-wbp"/>
                 <constraint firstAttribute="centerX" secondItem="bf4-Nf-8DQ" secondAttribute="centerX" id="yd9-Yj-EpX"/>
             </constraints>
             <size key="customSize" width="319" height="316"/>
@@ -74,6 +83,7 @@
             </variation>
             <connections>
                 <outlet property="ampSlider" destination="Saa-Zs-9RL" id="DGf-ve-4vF"/>
+                <outlet property="deleteButton" destination="XKs-AW-keu" id="WVK-7F-QCV"/>
                 <outlet property="freqLabel" destination="Wkl-1w-qGO" id="g1j-2m-vKH"/>
                 <outlet property="freqSlider" destination="zKB-hd-c7n" id="PAn-M7-4Ak"/>
                 <outlet property="panSlider" destination="ebo-8i-I3d" id="Lt4-9G-wij"/>

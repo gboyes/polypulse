@@ -79,6 +79,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
     }
     
+    
     func makeMetronomeAction(){
         
         let m = Metaronome()
@@ -91,6 +92,18 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let p = NSIndexPath(forItem: audioEngine.getMetronomes().count-1, inSection: 0)
         
         collectionView.scrollToItemAtIndexPath(p, atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
+    }
+    
+    func deleteMetronomeAction(sender:UIButton!){
+        
+        let a = audioEngine.getMetronomes()
+        
+        //Always keep one metronome
+        if a.count > 1 {
+            let m = a[sender.tag] as! Metaronome
+            audioEngine.removeMetronome(m)
+            collectionView.reloadData()
+        }
     }
     
     func tupletStepper(sender:UIStepper!){
@@ -200,7 +213,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         cell.freqLabel.text = String(format: "%0.2f", m.bpm)
         
         cell.contentView.layer.borderColor = UIColor.blackColor().CGColor
-        cell.contentView.layer.borderWidth = 2.0
+        cell.contentView.layer.borderWidth = 4.0
         
         
         //TODO: do this once instead
@@ -229,6 +242,19 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         cell.ampSlider.tag = tag
         cell.ampSlider.addTarget(self, action: Selector("ampSliderAction:"), forControlEvents: UIControlEvents.ValueChanged)
         cell.ampSlider.setValue(m.amp, animated: false)
+        
+        cell.deleteButton.tag = tag
+        cell.deleteButton.addTarget(self, action: Selector("deleteMetronomeAction:"), forControlEvents: UIControlEvents.TouchUpInside)
+        
+        
+    }
+    
+    override func viewWillLayoutSubviews() {
+    
+        super.viewWillLayoutSubviews()
+        
+        let f = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        f.itemSize = CGSize(width: self.collectionView.bounds.size.width, height: self.collectionView.bounds.size.height)
         
     }
 }

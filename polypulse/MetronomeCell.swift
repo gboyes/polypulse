@@ -20,4 +20,6 @@ class MetronomeCell: UICollectionViewCell {
     @IBOutlet var ampSlider:UISlider!
     @IBOutlet var panSlider:UISlider!
     
+    @IBOutlet var deleteButton:UIButton!
+    
 }
