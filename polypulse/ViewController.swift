@@ -16,6 +16,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet var bpmLabel:UILabel!
     @IBOutlet var collectionView:UICollectionView!
     @IBOutlet var controlView:UIView!
+    @IBOutlet var ampSlider:UISlider!
     
     @IBAction func controlAction(sender:UIBarButtonItem!){
         
@@ -43,16 +44,14 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
     }
     
-    @IBAction func periodChange(sender:UISlider!){
+    @IBAction func bpmChange(sender:UIStepper!){
         
         if (audioEngine != nil) {
             
-            audioEngine.period = Double(sender.value)
+            let period = 44100.0 * 60.0 / sender.value
+            audioEngine.period = period
             
-            let bpm = 44100.0 * 60.0 / sender.value
-            
-            bpmLabel.text = String(format:"%.0f bpm", bpm)
-            
+            bpmLabel.text = String(format:"%.0f bpm", sender.value)
             
             for m in audioEngine.getMetronomes() {
                 m.setPeriod(audioEngine.period)
@@ -173,6 +172,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        //override the default thumb image
+        ampSlider.setThumbImage(UIImage(named: "linew"), forState: UIControlState.Normal)
+        ampSlider.setThumbImage(UIImage(named: "linew"), forState: UIControlState.Selected)
+        ampSlider.setThumbImage(UIImage(named: "linew"), forState: UIControlState.Highlighted)
+        
         collectionView.registerNib(UINib(nibName: "MetronomeCell", bundle: nil), forCellWithReuseIdentifier: "metronomeCell")
         
         audioEngine = AudioEngine()
@@ -209,12 +213,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func configureCell(cell:MetronomeCell, m:Metaronome, index:Int) {
         
-        
-        cell.freqLabel.text = String(format: "%0.2f", m.bpm)
-        
         cell.contentView.layer.borderColor = UIColor.blackColor().CGColor
         cell.contentView.layer.borderWidth = 4.0
-        
         
         //TODO: do this once instead
         let tag = index
@@ -246,6 +246,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         cell.deleteButton.tag = tag
         cell.deleteButton.addTarget(self, action: Selector("deleteMetronomeAction:"), forControlEvents: UIControlEvents.TouchUpInside)
         
+        
+        //labels
+        cell.freqLabel.text = String(format: "%0.2f", m.bpm)
+        cell.pgroupLabel.text = String(format: "%0.0f", m.pgroup)
+        cell.tupletLabel.text = String(format: "%0.0f", m.tuplet)
+        cell.tgroupLabel.text = String(format: "%0.0f", m.tgroup)
         
     }
     

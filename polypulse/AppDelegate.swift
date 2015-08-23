@@ -20,6 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName : UIFont(name: "Courier New", size: 23.0)!]
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName : UIFont(name: "Courier New", size: 23.0)!], forState: UIControlState.Normal)
+        
+        UISlider.appearance().setThumbImage(UIImage(named: "line"), forState: UIControlState.Normal)
+        UISlider.appearance().setThumbImage(UIImage(named: "line"), forState: UIControlState.Selected)
+        UISlider.appearance().setThumbImage(UIImage(named: "line"), forState: UIControlState.Highlighted)
         
         return true
     }

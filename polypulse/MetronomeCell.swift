@@ -11,6 +11,11 @@ import UIKit
 class MetronomeCell: UICollectionViewCell {
     
     @IBOutlet var freqLabel:UILabel!
+    
+    @IBOutlet var pgroupLabel:UILabel!
+    @IBOutlet var tupletLabel:UILabel!
+    @IBOutlet var tgroupLabel:UILabel!
+    
     @IBOutlet var tupletStepper:UIStepper!
     @IBOutlet var tupletGroupStepper:UIStepper!
     @IBOutlet var periodGroupStepper:UIStepper!
