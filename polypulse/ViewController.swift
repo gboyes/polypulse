@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate {
 
     
     var audioEngine:AudioEngine!
@@ -17,6 +17,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet var collectionView:UICollectionView!
     @IBOutlet var controlView:UIView!
     @IBOutlet var ampSlider:UISlider!
+    @IBOutlet var pageControl:UIPageControl!
     
     @IBAction func controlAction(sender:UIBarButtonItem!){
         
@@ -79,18 +80,32 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     
+    func updatePageControl(){
+        pageControl.numberOfPages = audioEngine.getMetronomes().count
+        pageControl.currentPage = Int(self.collectionView.contentOffset.x / self.collectionView.frame.size.width)
+        
+    }
+    
     func makeMetronomeAction(){
         
-        let m = Metaronome()
+        let c = audioEngine.getMetronomes().count
         
-        m.setPeriod(audioEngine.period)
-        audioEngine.addMetronome(m)
+        if c < 16 {
         
-        collectionView.reloadData()
-        
-        let p = NSIndexPath(forItem: audioEngine.getMetronomes().count-1, inSection: 0)
-        
-        collectionView.scrollToItemAtIndexPath(p, atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
+            let m = Metaronome()
+            
+            m.setPeriod(audioEngine.period)
+            audioEngine.addMetronome(m)
+            
+            collectionView.reloadData()
+            
+            
+            let p = NSIndexPath(forItem: c, inSection: 0)
+            
+            collectionView.scrollToItemAtIndexPath(p, atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
+            
+            self.updatePageControl()
+        }
     }
     
     func deleteMetronomeAction(sender:UIButton!){
@@ -102,6 +117,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             let m = a[sender.tag] as! Metaronome
             audioEngine.removeMetronome(m)
             collectionView.reloadData()
+            
+            self.updatePageControl()
         }
     }
     
@@ -209,6 +226,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        
+        pageControl.currentPage = Int(self.collectionView.contentOffset.x / self.collectionView.frame.size.width)
     }
     
     func configureCell(cell:MetronomeCell, m:Metaronome, index:Int) {
