@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>E37842D6-B89F-4BF6-B1B9-7680C34974F4</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>polypulse</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>BDE7D4B13EB14FB01638FA589A4EEC4870AE26D3</key>
 		<string>https://github.com/gboyes/polypulse.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>polypulse.xcodeproj/project.xcworkspace</string>
+	<string>polypulse.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>BDE7D4B13EB14FB01638FA589A4EEC4870AE26D3</key>

@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xtf-29-QIN">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xtf-29-QIN">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="419" id="gWy-F1-DZN"/>
@@ -52,7 +52,7 @@
                                 </connections>
                             </collectionView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="1" translatesAutoresizingMaskIntoConstraints="NO" id="U6v-2b-TcW">
-                                <rect key="frame" x="296" y="489" width="7" height="37"/>
+                                <rect key="frame" x="296" y="499" width="7" height="37"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="pageIndicatorTintColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -134,7 +134,7 @@
                             <constraint firstItem="xtf-29-QIN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3Av-ne-121"/>
                             <constraint firstItem="7qp-Lb-02Y" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="5xD-Um-MnL"/>
                             <constraint firstAttribute="centerX" secondItem="U6v-2b-TcW" secondAttribute="centerX" id="BKE-Qk-O1w"/>
-                            <constraint firstAttribute="bottom" secondItem="U6v-2b-TcW" secondAttribute="bottom" constant="10" id="QML-az-hm1"/>
+                            <constraint firstAttribute="bottom" secondItem="U6v-2b-TcW" secondAttribute="bottom" id="QML-az-hm1"/>
                             <constraint firstAttribute="bottom" secondItem="xtf-29-QIN" secondAttribute="bottom" id="R6X-mz-d6Y"/>
                             <constraint firstAttribute="bottom" secondItem="7qp-Lb-02Y" secondAttribute="bottom" id="ep9-Pu-xIa"/>
                             <constraint firstAttribute="centerX" secondItem="7qp-Lb-02Y" secondAttribute="centerX" id="fWs-y7-v9m"/>
