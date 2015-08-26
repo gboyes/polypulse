@@ -101,6 +101,10 @@
                                             <action selector="bpmChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="rPq-3n-7I6"/>
                                         </connections>
                                     </stepper>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VR2-PJ-BIz">
+                                        <rect key="frame" x="10" y="10" width="580" height="262"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -114,9 +118,13 @@
                                     <constraint firstAttribute="centerX" secondItem="WNk-cG-IPx" secondAttribute="centerX" id="W1U-l6-JzN"/>
                                     <constraint firstItem="2zf-sc-zv7" firstAttribute="top" secondItem="WNk-cG-IPx" secondAttribute="bottom" constant="50" id="dYS-UM-rec"/>
                                     <constraint firstItem="WNk-cG-IPx" firstAttribute="top" secondItem="7qp-Lb-02Y" secondAttribute="top" constant="20" id="fHW-fs-cy1"/>
+                                    <constraint firstItem="WNk-cG-IPx" firstAttribute="top" secondItem="VR2-PJ-BIz" secondAttribute="bottom" constant="10" id="ght-Aa-48e"/>
+                                    <constraint firstItem="VR2-PJ-BIz" firstAttribute="leading" secondItem="7qp-Lb-02Y" secondAttribute="leading" constant="10" id="hXn-Uf-PyJ"/>
+                                    <constraint firstItem="VR2-PJ-BIz" firstAttribute="top" secondItem="7qp-Lb-02Y" secondAttribute="top" constant="10" id="jtL-Rv-Pa7"/>
                                     <constraint firstAttribute="centerX" secondItem="2zf-sc-zv7" secondAttribute="centerX" id="kR5-OW-Gc7"/>
                                     <constraint firstAttribute="centerX" secondItem="RCS-bI-o2p" secondAttribute="centerX" id="kqa-2m-uE5"/>
                                     <constraint firstAttribute="bottom" secondItem="1A3-Nh-sdP" secondAttribute="bottom" constant="60" id="ofQ-9H-plS"/>
+                                    <constraint firstAttribute="trailing" secondItem="VR2-PJ-BIz" secondAttribute="trailing" constant="10" id="wKT-oq-YKP"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -161,6 +169,7 @@
                         <outlet property="bpmLabel" destination="RCS-bI-o2p" id="fPQ-5D-dpK"/>
                         <outlet property="collectionView" destination="xtf-29-QIN" id="gtu-RA-sXD"/>
                         <outlet property="controlView" destination="7qp-Lb-02Y" id="u3k-XT-Sje"/>
+                        <outlet property="indicatorView" destination="VR2-PJ-BIz" id="G9v-xh-wMw"/>
                         <outlet property="pageControl" destination="U6v-2b-TcW" id="NeQ-Gk-yMT"/>
                     </connections>
                 </viewController>

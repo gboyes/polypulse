@@ -159,6 +159,8 @@
             // Wait for a buffer to become available using the audio semaphore
             dispatch_semaphore_wait(audioSemaphore, DISPATCH_TIME_FOREVER);
             
+            __block float repval = 0.0;
+            
             //get the reference to the current audio buffer
             AVAudioPCMBuffer *buffer = (AVAudioPCMBuffer *)[_audioBuffers objectAtIndex:bufferIndex]; // Fill the buffer with new samples.
             
@@ -190,6 +192,8 @@
                 rightChannel[sampleIndex] = rsample;
                 
                 sampleTime++;
+                
+                repval += (fabsf(lsample) + fabsf(rsample)) * 0.5;
             }
             
             buffer.frameLength = kSamplesPerBuffer;
@@ -200,6 +204,13 @@
                 
                 //free the semaphore
                 dispatch_semaphore_signal(audioSemaphore);
+                
+                ;
+                
+                //notify the delegate
+                [self.delegate updatedRepresentativeBufferValue:repval];
+                
+                
                 return;
             }];
             

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate {
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate, AudioEngineDelegate {
 
     
     var audioEngine:AudioEngine!
@@ -16,6 +16,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet var bpmLabel:UILabel!
     @IBOutlet var collectionView:UICollectionView!
     @IBOutlet var controlView:UIView!
+    @IBOutlet var indicatorView:UIView!
     @IBOutlet var ampSlider:UISlider!
     @IBOutlet var pageControl:UIPageControl!
     
@@ -189,6 +190,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        //keep app from going to background
+        UIApplication.sharedApplication().idleTimerDisabled = true
+        
         //override the default thumb image
         ampSlider.setThumbImage(UIImage(named: "linew"), forState: UIControlState.Normal)
         ampSlider.setThumbImage(UIImage(named: "linew"), forState: UIControlState.Selected)
@@ -197,12 +201,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         collectionView.registerNib(UINib(nibName: "MetronomeCell", bundle: nil), forCellWithReuseIdentifier: "metronomeCell")
         
         audioEngine = AudioEngine()
+        audioEngine.delegate = self
         audioEngine.period = 44100.0
         
         self.makeMetronomeAction()
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -284,6 +289,20 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let f = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         f.itemSize = CGSize(width: self.collectionView.bounds.size.width, height: self.collectionView.bounds.size.height)
         
+    }
+    
+    //MARK: audio engine delegate
+    func updatedRepresentativeBufferValue(val: Float) {
+        
+        
+        
+        dispatch_async(dispatch_get_main_queue()) {
+            
+            self.indicatorView.backgroundColor = UIColor(white: CGFloat(val), alpha: 1.0)
+            return
+
+        }
+    
     }
 }
 
