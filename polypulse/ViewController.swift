@@ -292,17 +292,26 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     //MARK: audio engine delegate
-    func updatedRepresentativeBufferValue(val: Float) {
-        
-        
-        
+    func updatedRepresentativeBufferValue(val: UnsafeMutablePointer<Float>) {
         dispatch_async(dispatch_get_main_queue()) {
             
-            self.indicatorView.backgroundColor = UIColor(white: CGFloat(val), alpha: 1.0)
+            self.indicatorView.backgroundColor = UIColor(red: CGFloat(val[0]), green: CGFloat(val[1]), blue: CGFloat(val[2]), alpha: 1.0)
             return
-
+            
         }
-    
     }
+    
+//    func updatedRepresentativeBufferValue(val: Float) {
+//        
+//        
+//        
+//        dispatch_async(dispatch_get_main_queue()) {
+//            
+//            self.indicatorView.backgroundColor = UIColor(white: CGFloat(val), alpha: 1.0)
+//            return
+//
+//        }
+//    
+//    }
 }
 

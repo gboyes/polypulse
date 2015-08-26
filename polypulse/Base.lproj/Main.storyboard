@@ -60,8 +60,12 @@
                             <view alpha="0.89999999999999991" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7qp-Lb-02Y">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VR2-PJ-BIz">
+                                        <rect key="frame" x="10" y="10" width="580" height="516"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="WNk-cG-IPx">
-                                        <rect key="frame" x="18" y="282" width="564" height="31"/>
+                                        <rect key="frame" x="18" y="281" width="564" height="31"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="thumbTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
@@ -69,22 +73,24 @@
                                         </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60 BPM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RCS-bI-o2p">
-                                        <rect key="frame" x="230" y="441" width="141" height="45"/>
+                                        <rect key="frame" x="230" y="440" width="141" height="46"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="39"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
+                                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1A3-Nh-sdP">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" onImage="linew.png" offImage="line.png" translatesAutoresizingMaskIntoConstraints="NO" id="1A3-Nh-sdP">
                                         <rect key="frame" x="20" y="448" width="51" height="31"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="onTintColor" red="1" green="0.0" blue="0.25256780083854302" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="onTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="thumbTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <action selector="toggleMetronome:" destination="BYZ-38-t0r" eventType="valueChanged" id="AVb-W9-1zr"/>
                                         </connections>
                                     </switch>
                                     <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="60" minimumValue="1" maximumValue="600" translatesAutoresizingMaskIntoConstraints="NO" id="2zf-sc-zv7">
-                                        <rect key="frame" x="253" y="362" width="94" height="29"/>
+                                        <rect key="frame" x="253" y="361" width="94" height="29"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="kDB-cS-qvg"/>
@@ -101,10 +107,6 @@
                                             <action selector="bpmChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="rPq-3n-7I6"/>
                                         </connections>
                                     </stepper>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VR2-PJ-BIz">
-                                        <rect key="frame" x="10" y="10" width="580" height="262"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -124,12 +126,14 @@
                                     <constraint firstAttribute="centerX" secondItem="2zf-sc-zv7" secondAttribute="centerX" id="kR5-OW-Gc7"/>
                                     <constraint firstAttribute="centerX" secondItem="RCS-bI-o2p" secondAttribute="centerX" id="kqa-2m-uE5"/>
                                     <constraint firstAttribute="bottom" secondItem="1A3-Nh-sdP" secondAttribute="bottom" constant="60" id="ofQ-9H-plS"/>
+                                    <constraint firstAttribute="bottom" secondItem="VR2-PJ-BIz" secondAttribute="bottom" constant="10" id="qqa-Hs-lg3"/>
                                     <constraint firstAttribute="trailing" secondItem="VR2-PJ-BIz" secondAttribute="trailing" constant="10" id="wKT-oq-YKP"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="88s-tU-R9D"/>
                                         <exclude reference="fHW-fs-cy1"/>
+                                        <exclude reference="ght-Aa-48e"/>
                                         <exclude reference="ofQ-9H-plS"/>
                                     </mask>
                                 </variation>
@@ -195,6 +199,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="line.png" width="5" height="40"/>
+        <image name="linew.png" width="5" height="40"/>
         <image name="pulse.png" width="22" height="22"/>
     </resources>
 </document>

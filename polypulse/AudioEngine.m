@@ -159,7 +159,7 @@
             // Wait for a buffer to become available using the audio semaphore
             dispatch_semaphore_wait(audioSemaphore, DISPATCH_TIME_FOREVER);
             
-            __block float repval = 0.0;
+            __block float *repval = calloc(3, sizeof(float));//on the heap, plays ok with GCD
             
             //get the reference to the current audio buffer
             AVAudioPCMBuffer *buffer = (AVAudioPCMBuffer *)[_audioBuffers objectAtIndex:bufferIndex]; // Fill the buffer with new samples.
@@ -178,11 +178,15 @@
                 float lsample = 0.0;
                 float rsample = 0.0;
                 
+                int count = 0;
+                
                 //iterate through the refs and construct the sample, slow
                 for (Metaronome *m in ms){
-                    sample += sinf(2.0 * M_PI/kSampleRate * m.freq * sampleTime) * exp(-0.005 * (fmod( (double)sampleTime, m.period))) * m.amp;
+                    sample += sinf(2.0 * M_PI/kSampleRate * m.freq * sampleTime) * exp(-0.0077 * (fmod( (double)sampleTime, m.period))) * m.amp;
                     lsample += sample * m.pan;
                     rsample += sample * (1-m.pan);
+                    repval[count % 3] += (fabsf(lsample) + fabsf(rsample)) * 0.5;
+                    count++;
                 }
                 
                 lsample *= self.amp * scalar;
@@ -193,7 +197,7 @@
                 
                 sampleTime++;
                 
-                repval += (fabsf(lsample) + fabsf(rsample)) * 0.5;
+                
             }
             
             buffer.frameLength = kSamplesPerBuffer;
@@ -209,7 +213,8 @@
                 
                 //notify the delegate
                 [self.delegate updatedRepresentativeBufferValue:repval];
-                
+                free(repval);
+                repval = NULL;
                 
                 return;
             }];
