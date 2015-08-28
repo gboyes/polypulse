@@ -13,6 +13,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     var audioEngine:AudioEngine!
     
+    @IBOutlet var engineToggle:UISwitch!
     @IBOutlet var bpmLabel:UILabel!
     @IBOutlet var collectionView:UICollectionView!
     @IBOutlet var controlView:UIView!
@@ -83,7 +84,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func updatePageControl(){
         pageControl.numberOfPages = audioEngine.getMetronomes().count
-        pageControl.currentPage = Int(self.collectionView.contentOffset.x / self.collectionView.frame.size.width)
+        pageControl.currentPage = Int(self.collectionView.contentOffset.y / self.collectionView.frame.size.height)
         
     }
     
@@ -103,7 +104,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             
             let p = NSIndexPath(forItem: c, inSection: 0)
             
-            collectionView.scrollToItemAtIndexPath(p, atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
+            collectionView.scrollToItemAtIndexPath(p, atScrollPosition: UICollectionViewScrollPosition.Bottom, animated: true)
             
             self.updatePageControl()
         }
@@ -235,7 +236,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         
-        pageControl.currentPage = Int(self.collectionView.contentOffset.x / self.collectionView.frame.size.width)
+        pageControl.currentPage = Int(self.collectionView.contentOffset.y / self.collectionView.frame.size.height)
     }
     
     func configureCell(cell:MetronomeCell, m:Metaronome, index:Int) {
@@ -302,5 +303,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
     }
     
+    func audioEngineStopped() {
+        engineToggle.setOn(false, animated: true);
+    }
 }
 

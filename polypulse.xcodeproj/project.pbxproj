@@ -22,6 +22,9 @@
 		8275D8241B8FEBCE00B5FF98 /* pulse+.png in Resources */ = {isa = PBXBuildFile; fileRef = 8275D8211B8FEBCE00B5FF98 /* pulse+.png */; };
 		8275D8251B8FEBCE00B5FF98 /* pulse+@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8275D8221B8FEBCE00B5FF98 /* pulse+@2x.png */; };
 		8275D8261B8FEBCE00B5FF98 /* pulse+@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8275D8231B8FEBCE00B5FF98 /* pulse+@3x.png */; };
+		82E529651B90EA2500AA5DE4 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E529621B90EA2500AA5DE4 /* plus.png */; };
+		82E529661B90EA2500AA5DE4 /* plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E529631B90EA2500AA5DE4 /* plus@2x.png */; };
+		82E529671B90EA2500AA5DE4 /* plus@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E529641B90EA2500AA5DE4 /* plus@3x.png */; };
 		82EF3E4D1B20A95300C31F9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EF3E4C1B20A95300C31F9A /* AppDelegate.swift */; };
 		82EF3E501B20A95300C31F9A /* polypulse.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82EF3E4E1B20A95300C31F9A /* polypulse.xcdatamodeld */; };
 		82EF3E521B20A95300C31F9A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EF3E511B20A95300C31F9A /* ViewController.swift */; };
@@ -60,6 +63,9 @@
 		8275D8211B8FEBCE00B5FF98 /* pulse+.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pulse+.png"; sourceTree = "<group>"; };
 		8275D8221B8FEBCE00B5FF98 /* pulse+@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pulse+@2x.png"; sourceTree = "<group>"; };
 		8275D8231B8FEBCE00B5FF98 /* pulse+@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pulse+@3x.png"; sourceTree = "<group>"; };
+		82E529621B90EA2500AA5DE4 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
+		82E529631B90EA2500AA5DE4 /* plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus@2x.png"; sourceTree = "<group>"; };
+		82E529641B90EA2500AA5DE4 /* plus@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus@3x.png"; sourceTree = "<group>"; };
 		82EF3E471B20A95300C31F9A /* polypulse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = polypulse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82EF3E4B1B20A95300C31F9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82EF3E4C1B20A95300C31F9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +106,9 @@
 		82368FA31B868DF80090E678 /* img */ = {
 			isa = PBXGroup;
 			children = (
+				82E529621B90EA2500AA5DE4 /* plus.png */,
+				82E529631B90EA2500AA5DE4 /* plus@2x.png */,
+				82E529641B90EA2500AA5DE4 /* plus@3x.png */,
 				8275D8211B8FEBCE00B5FF98 /* pulse+.png */,
 				8275D8221B8FEBCE00B5FF98 /* pulse+@2x.png */,
 				8275D8231B8FEBCE00B5FF98 /* pulse+@3x.png */,
@@ -273,7 +282,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				826B185F1B26764300167B82 /* MetronomeCell.xib in Resources */,
+				82E529651B90EA2500AA5DE4 /* plus.png in Resources */,
 				82368FA91B868DF80090E678 /* pulse@3x.png in Resources */,
+				82E529671B90EA2500AA5DE4 /* plus@3x.png in Resources */,
 				8275D8251B8FEBCE00B5FF98 /* pulse+@2x.png in Resources */,
 				820019141B8A5513008C5A20 /* linew@1x.png in Resources */,
 				8275D8241B8FEBCE00B5FF98 /* pulse+.png in Resources */,
@@ -285,6 +296,7 @@
 				82EF3E571B20A95300C31F9A /* Images.xcassets in Resources */,
 				8274C9FF1B878A4700BBE26E /* pulse@1x.png in Resources */,
 				8200190F1B8A50D3008C5A20 /* line@2x.png in Resources */,
+				82E529661B90EA2500AA5DE4 /* plus@2x.png in Resources */,
 				8200190E1B8A50D3008C5A20 /* line@1x.png in Resources */,
 				820019101B8A50D3008C5A20 /* line@3x.png in Resources */,
 				8275D8261B8FEBCE00B5FF98 /* pulse+@3x.png in Resources */,

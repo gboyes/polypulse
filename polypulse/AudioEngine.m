@@ -27,7 +27,7 @@
     dispatch_semaphore_t    audioSemaphore;
     NSMutableArray          *_audioBuffers;
     int                     bufferIndex;
-    BOOL                    on;
+    __block BOOL                    on;
     long long               sampleTime;
     NSMutableArray          *metronomes;
 }
@@ -182,7 +182,7 @@
                 
                 //iterate through the refs and construct the sample, slow
                 for (Metaronome *m in ms){
-                    sample += sinf(2.0 * M_PI/kSampleRate * m.freq * sampleTime) * exp(-0.005 * (fmod( (double)sampleTime, m.period))) * m.amp;
+                    sample += sinf(2.0 * M_PI/kSampleRate * m.freq * sampleTime) * exp(-0.006 * (fmod( (double)sampleTime, m.period))) * m.amp;
                     lsample += sample * m.pan;
                     rsample += sample * (1-m.pan);
                     repval[count % 3] += (fabsf(lsample) + fabsf(rsample)) * 0.5;
@@ -288,8 +288,7 @@
         // start the engine once again
         
         if (on){
-            [self startEngine];
-            [self render];
+            [self start];
         }
     }
 }
@@ -302,11 +301,18 @@
     NSLog(@"Route change:");
     switch (reasonValue) {
         case AVAudioSessionRouteChangeReasonNewDeviceAvailable:
+        {
             NSLog(@"     NewDeviceAvailable");
             break;
+        }
         case AVAudioSessionRouteChangeReasonOldDeviceUnavailable:
+        {
             NSLog(@"     OldDeviceUnavailable");
+            [self stop];
+            [_engine stop];
+            [self.delegate audioEngineStopped]; //trigger UI update
             break;
+        }
         case AVAudioSessionRouteChangeReasonCategoryChange:
             NSLog(@"     CategoryChange");
             NSLog(@" New Category: %@", [[AVAudioSession sharedInstance] category]);
@@ -326,6 +332,7 @@
     
     NSLog(@"Previous route:\n");
     NSLog(@"%@", routeDescription);
+    
 }
 
 - (void)handleMediaServicesReset:(NSNotification *)notification
@@ -339,8 +346,7 @@
     [self makeEngineConnections];
     
     if (on){
-        [self startEngine];
-        [self render];
+        [self start];
     }
 }
 

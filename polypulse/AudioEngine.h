@@ -12,6 +12,7 @@
 @protocol AudioEngineDelegate <NSObject>
 
 - (void)updatedRepresentativeBufferValue:(float*)val;
+- (void)audioEngineStopped;
 
 @end
 
