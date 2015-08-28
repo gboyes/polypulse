@@ -182,7 +182,7 @@
                 
                 //iterate through the refs and construct the sample, slow
                 for (Metaronome *m in ms){
-                    sample += sinf(2.0 * M_PI/kSampleRate * m.freq * sampleTime) * exp(-0.0077 * (fmod( (double)sampleTime, m.period))) * m.amp;
+                    sample += sinf(2.0 * M_PI/kSampleRate * m.freq * sampleTime) * exp(-0.005 * (fmod( (double)sampleTime, m.period))) * m.amp;
                     lsample += sample * m.pan;
                     rsample += sample * (1-m.pan);
                     repval[count % 3] += (fabsf(lsample) + fabsf(rsample)) * 0.5;

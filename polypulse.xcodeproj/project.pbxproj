@@ -19,6 +19,9 @@
 		826B185D1B26697D00167B82 /* MetronomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826B185C1B26697D00167B82 /* MetronomeCell.swift */; };
 		826B185F1B26764300167B82 /* MetronomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 826B185E1B26764300167B82 /* MetronomeCell.xib */; };
 		8274C9FF1B878A4700BBE26E /* pulse@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8274C9FE1B878A4700BBE26E /* pulse@1x.png */; };
+		8275D8241B8FEBCE00B5FF98 /* pulse+.png in Resources */ = {isa = PBXBuildFile; fileRef = 8275D8211B8FEBCE00B5FF98 /* pulse+.png */; };
+		8275D8251B8FEBCE00B5FF98 /* pulse+@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8275D8221B8FEBCE00B5FF98 /* pulse+@2x.png */; };
+		8275D8261B8FEBCE00B5FF98 /* pulse+@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8275D8231B8FEBCE00B5FF98 /* pulse+@3x.png */; };
 		82EF3E4D1B20A95300C31F9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EF3E4C1B20A95300C31F9A /* AppDelegate.swift */; };
 		82EF3E501B20A95300C31F9A /* polypulse.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82EF3E4E1B20A95300C31F9A /* polypulse.xcdatamodeld */; };
 		82EF3E521B20A95300C31F9A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EF3E511B20A95300C31F9A /* ViewController.swift */; };
@@ -54,6 +57,9 @@
 		826B185C1B26697D00167B82 /* MetronomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeCell.swift; sourceTree = "<group>"; };
 		826B185E1B26764300167B82 /* MetronomeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MetronomeCell.xib; sourceTree = "<group>"; };
 		8274C9FE1B878A4700BBE26E /* pulse@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pulse@1x.png"; sourceTree = "<group>"; };
+		8275D8211B8FEBCE00B5FF98 /* pulse+.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pulse+.png"; sourceTree = "<group>"; };
+		8275D8221B8FEBCE00B5FF98 /* pulse+@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pulse+@2x.png"; sourceTree = "<group>"; };
+		8275D8231B8FEBCE00B5FF98 /* pulse+@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pulse+@3x.png"; sourceTree = "<group>"; };
 		82EF3E471B20A95300C31F9A /* polypulse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = polypulse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82EF3E4B1B20A95300C31F9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82EF3E4C1B20A95300C31F9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +100,9 @@
 		82368FA31B868DF80090E678 /* img */ = {
 			isa = PBXGroup;
 			children = (
+				8275D8211B8FEBCE00B5FF98 /* pulse+.png */,
+				8275D8221B8FEBCE00B5FF98 /* pulse+@2x.png */,
+				8275D8231B8FEBCE00B5FF98 /* pulse+@3x.png */,
 				820019111B8A5513008C5A20 /* linew@1x.png */,
 				820019121B8A5513008C5A20 /* linew@2x.png */,
 				820019131B8A5513008C5A20 /* linew@3x.png */,
@@ -265,7 +274,9 @@
 			files = (
 				826B185F1B26764300167B82 /* MetronomeCell.xib in Resources */,
 				82368FA91B868DF80090E678 /* pulse@3x.png in Resources */,
+				8275D8251B8FEBCE00B5FF98 /* pulse+@2x.png in Resources */,
 				820019141B8A5513008C5A20 /* linew@1x.png in Resources */,
+				8275D8241B8FEBCE00B5FF98 /* pulse+.png in Resources */,
 				82EF3E551B20A95300C31F9A /* Main.storyboard in Resources */,
 				820019151B8A5513008C5A20 /* linew@2x.png in Resources */,
 				82EF3E5A1B20A95300C31F9A /* LaunchScreen.xib in Resources */,
@@ -276,6 +287,7 @@
 				8200190F1B8A50D3008C5A20 /* line@2x.png in Resources */,
 				8200190E1B8A50D3008C5A20 /* line@1x.png in Resources */,
 				820019101B8A50D3008C5A20 /* line@3x.png in Resources */,
+				8275D8261B8FEBCE00B5FF98 /* pulse+@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

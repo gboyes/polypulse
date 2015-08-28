@@ -19,9 +19,9 @@
                     <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" continuous="NO" autorepeat="NO" value="1" minimumValue="1" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="bf4-Nf-8DQ">
                         <rect key="frame" x="113" y="219" width="94" height="29"/>
                     </stepper>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wkl-1w-qGO">
-                        <rect key="frame" x="8" y="8" width="76" height="29"/>
-                        <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="25"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Wkl-1w-qGO">
+                        <rect key="frame" x="8" y="8" width="181" height="68"/>
+                        <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="60"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -42,12 +42,12 @@
                         <rect key="frame" x="113" y="121" width="94" height="29"/>
                     </stepper>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XKs-AW-keu">
-                        <rect key="frame" x="274" y="6" width="34" height="33"/>
+                        <rect key="frame" x="248" y="12" width="60" height="60"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="34" id="1C2-A8-8hZ"/>
-                            <constraint firstAttribute="height" constant="33" id="lQL-XZ-AyJ"/>
+                            <constraint firstAttribute="width" constant="60" id="1C2-A8-8hZ"/>
+                            <constraint firstAttribute="height" constant="60" id="lQL-XZ-AyJ"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="40"/>
+                        <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="60"/>
                         <state key="normal" title="-">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
