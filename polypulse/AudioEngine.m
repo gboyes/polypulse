@@ -68,6 +68,7 @@
 
 - (void)stop {
     on = NO;
+    
     //this clears any previously scheduled events,
     //it's required in handling route changes, which cause the buffer player to deadlock otherwise
     [_bufferPlayer stop];

@@ -207,6 +207,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         self.makeMetronomeAction()
         
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -294,19 +295,15 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     //MARK: audio engine delegate
     func updatedRepresentativeBufferValue(val: UnsafeMutablePointer<Float>) {
-        dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
-            
+        
+        
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 
-                UIView.animateWithDuration(1.0/30.0, animations: { () -> Void in
-                    self.indicatorView.layer.backgroundColor = UIColor(red: CGFloat(val[0]), green: CGFloat(val[1]), blue: CGFloat(val[2]), alpha: 1.0).CGColor
-                })
-                
-//                self.indicatorView.layer.backgroundColor = UIColor(red: CGFloat(val[0]), green: CGFloat(val[1]), blue: CGFloat(val[2]), alpha: 1.0).CGColor
+                self.indicatorView.layer.backgroundColor = UIColor(red: CGFloat(val[0]), green: CGFloat(val[1]), blue: CGFloat(val[2]), alpha: 1.0).CGColor
                 return
             })
-            
-        }
+        
+        
     }
     
     func audioEngineStopped() {
@@ -315,6 +312,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             self.engineToggle.setOn(false, animated: true);
             return
         })
+        
     }
 }
 
