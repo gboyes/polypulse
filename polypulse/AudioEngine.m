@@ -27,7 +27,7 @@
     dispatch_semaphore_t    audioSemaphore;
     NSMutableArray          *_audioBuffers;
     int                     bufferIndex;
-    __block BOOL                    on;
+    __block BOOL            on;
     long long               sampleTime;
     NSMutableArray          *metronomes;
 }
@@ -68,6 +68,9 @@
 
 - (void)stop {
     on = NO;
+    //this clears any previously scheduled events,
+    //it's required in handling route changes, which cause the buffer player to deadlock otherwise
+    [_bufferPlayer stop];
 }
 
 - (void)addMetronome:(Metaronome *)met{
@@ -152,12 +155,13 @@
 //MARK: callback that fills the audio buffer
 - (void)render {
     
+    
     dispatch_async(audioQueue, ^{
         
         while (on) {
             
-            // Wait for a buffer to become available using the audio semaphore
-            dispatch_semaphore_wait(audioSemaphore, DISPATCH_TIME_FOREVER);
+            // Wait for a buffer to become available using the audio semaphore, give an ad hoc time out though it should never happen
+            dispatch_semaphore_wait(audioSemaphore, dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 10));
             
             __block float *repval = calloc(3, sizeof(float));//on the heap, plays ok with GCD
             
@@ -208,8 +212,6 @@
                 
                 //free the semaphore
                 dispatch_semaphore_signal(audioSemaphore);
-                
-                ;
                 
                 //notify the delegate
                 [self.delegate updatedRepresentativeBufferValue:repval];
@@ -286,7 +288,6 @@
         if (!success) NSLog(@"AVAudioSession set active failed with error: %@", [error localizedDescription]);
         
         // start the engine once again
-        
         if (on){
             [self start];
         }
@@ -303,14 +304,15 @@
         case AVAudioSessionRouteChangeReasonNewDeviceAvailable:
         {
             NSLog(@"     NewDeviceAvailable");
+            [self stop];
+            [self.delegate audioEngineStopped];
             break;
         }
         case AVAudioSessionRouteChangeReasonOldDeviceUnavailable:
         {
             NSLog(@"     OldDeviceUnavailable");
             [self stop];
-            [_engine stop];
-            [self.delegate audioEngineStopped]; //trigger UI update
+            [self.delegate audioEngineStopped];
             break;
         }
         case AVAudioSessionRouteChangeReasonCategoryChange:

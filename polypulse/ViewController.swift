@@ -304,7 +304,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func audioEngineStopped() {
-        engineToggle.setOn(false, animated: true);
+        
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.engineToggle.setOn(false, animated: true);
+            return
+        })
     }
 }
 
