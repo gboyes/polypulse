@@ -461,6 +461,7 @@
 				PROVISIONING_PROFILE = "872690be-60cd-4459-b089-ddcc50b753f6";
 				SWIFT_OBJC_BRIDGING_HEADER = "polypulse/polypulse-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -477,6 +478,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "1b1ac332-35cc-49c0-a7ec-10387bf9f729";
 				SWIFT_OBJC_BRIDGING_HEADER = "polypulse/polypulse-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
